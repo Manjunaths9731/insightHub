@@ -1,24 +1,26 @@
-package com.example.data_ingestion_service.entity;
+package com.example.data_collector_service.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "ingestionLog")
+@Table(name = "ingestion_log")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class IngestionLog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String source;
-    private String entityType;
 
     @Column(columnDefinition = "TEXT")
     private String payload;
 
-    private boolean success;
-    private Instant createdAt = Instant.now();
+    private LocalDateTime receivedAt;
 }
