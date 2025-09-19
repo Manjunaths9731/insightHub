@@ -1,10 +1,11 @@
 package com.example.common.dto;
 
+import com.example.common.util.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -13,6 +14,7 @@ import java.util.UUID;
 public class EventMessage {
     private String id = UUID.randomUUID().toString();
     private String type;
+    private String source;
     private Object payload;
-    private Instant timestamp = Instant.now();
+    private LocalDateTime timestamp = DateUtil.now();
 }
